@@ -1,0 +1,33 @@
+from sense_emu import SenseHat
+from random import randint
+import http.client
+import urllib.request
+from time import sleep
+
+sense = SenseHat()
+key = "HB8UYDUZTGJ2DE3H"  # Put your API Key here
+def write_temp():
+    while True:
+      sleep(15)
+      #temp = randint(0,50)
+      temp = sense.temp
+      press = sense.pressure
+      hum = sense.humidity
+      params = urllib.parse.urlencode({'field1': temp, 'field2': hum, 'field3': press, 'key':key }) 
+      headers = {"Content-typZZe": "application/x-www-form-urlencoded","Accept": "text/plain"}
+      conn = http.client.HTTPConnection("api.thingspeak.com:80")
+      try:
+            conn.request("POST", "/update", params, headers)
+            response = conn.getresponse()
+            print (temp)
+            print (hum)
+            print (press)
+            print (response.status, response.reason)
+            data = response.read()
+            conn.close()
+      except:
+            print("connection failed")
+      break
+if __name__ == "__main__":
+      while True:
+            write_temp()
