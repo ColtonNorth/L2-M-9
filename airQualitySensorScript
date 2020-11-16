@@ -1,0 +1,29 @@
+rom random import randint
+import http.client
+import urllib.request
+from time import sleep
+key = "UQ8UQVWT64WAQ7VW"  # Put your API Key here
+def write_airsensor():
+    while True:
+        sleep(15)
+        carbonLevels = randint(250, 5000)
+        nitrogenLevels = randint(0,300)
+        vocLevels = randint(500,1000)
+        params = urllib.parse.urlencode({'field1': carbonLevels, 'field2': nitrogenLevels, 'field3': vocLevels,key':key }) 
+        headers = {"Content-typZZe": "application/x-www-form-urlencoded","Accept": "text/plain"}
+        conn = http.client.HTTPConnection("api.thingspeak.com:80")
+        try:
+            conn.request("POST", "/update", params, headers)
+            response = conn.getresponse()
+            print (carbonLevels)
+            print (nitrogenLevels)
+            print (vocLevels)
+            print response.status, response.reason
+            data = response.read()
+            conn.close()
+        except:
+            print "connection failed"
+        break
+if __name__ == "__main__":
+        while True:
+                write_airsensor()
