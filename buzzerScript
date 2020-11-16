@@ -23,12 +23,12 @@ def read_data_thingspeak_buzzer():
   
     for x in get_data['feeds']:
         turnOnBuzzer = x['field1']  #access field 1
-    return bool(turnOnBuzzer) #return turnOnBuzzer as a boolean
+    return int(turnOnBuzzer) #return turnOnBuzzer as an integer
   
 if __name__ == '__main__':
-    while True: #if turnOnBuzzer is true, buzzer will turn on for 5 seconds. Check turnOnBuzzer every 15 seconds
+    while True: #if turnOnBuzzer is set to 1, buzzer will turn on for 5 seconds. Check turnOnBuzzer every 15 seconds
   
-        if read_data_thingspeak_buzzer() == True:
+        if read_data_thingspeak_buzzer() == 1:
             print ('Buzzer ON: Air quality is not safe!')
             buzzerOn()
         else:
