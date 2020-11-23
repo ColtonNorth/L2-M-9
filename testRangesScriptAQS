@@ -1,0 +1,34 @@
+import unittest
+from random import randint
+
+class test_ranges(unittest.TestCase):
+
+    def test_ranges(self):
+        //Initialize random values within range
+        carbonVal = randint(250,5000)
+        nitrogenVal = randint(0,300)
+        vocVal = randint(500,1000)
+
+        //Maximum values for given ranges
+        carbonMaxVal = 5000
+        carbonMinVal = 250
+
+        nitrogenMaxVal = 300
+        nitrogenMinVal = 0
+
+        vocMaxVal = 1000
+        vocMinVal = 500
+
+        //Test if the values are within the given range
+        self.assertTrue(carbonVal <=  carbonMaxVal, msg= "carbon Level out of range")
+        self.assertTrue(carbonVal >=  carbonMinVal, msg= "carbon Level out of range")
+
+        self.assertTrue(carbonVal <=  nitrogenMaxVal, msg= "nitrogen Level out of range")
+        self.assertTrue(carbonVal >=  nitrogenMinVal, msg= "nitrogen Level out of range")
+
+        self.assertTrue(carbonVal <=  carbonMaxVal, msg= "voc Level out of range")
+        self.assertTrue(carbonVal >=  carbonMinVal, msg= "voc Level out of range")
+
+if __name__ == '__main__':
+    unittest.main()
+
