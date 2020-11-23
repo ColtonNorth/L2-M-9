@@ -1,0 +1,7 @@
+from buzzer import *
+
+value = int(input("Enter number"))
+write_data_thingspeak_alertBuzzer(value)
+time.sleep(2)
+print ('value read from thingspeak is:', read_data_thingspeak_buzzer())
+write_data_thingspeak_alertBuzzer(0)
