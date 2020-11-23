@@ -2,7 +2,7 @@ rom random import randint
 import http.client
 import urllib.request
 from time import sleep
-key = "UQ8UQVWT64WAQ7VW"  # Put your API Key here
+key = "UQ8UQVWT64WAQ7VW"  # My API Key
 def write_airsensor():
     while True:
         sleep(15)
