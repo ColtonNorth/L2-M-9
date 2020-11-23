@@ -6,6 +6,7 @@ import requests
 import json
 import time
 from time import sleep
+import sqlite3
 
 def read_data_thingspeak_temperature():
     URL = 'https://api.thingspeak.com/channels/1226418/fields/1.json?api_key=Q8WQRS84BFT21SCG&results1'
@@ -104,6 +105,14 @@ def read_data_thingspeak_VOC():
     return float(temp[0])
 
 if __name__ == '__main__':
+    
+    #connect to database file
+    dbconnect = sqlite3.connect("database.db");
+
+    #If we want to access columns by name we need to set
+    dbconnect.row_factory = sqlite3.Row;
+    #now we create a cursor to work with db
+    cursor = dbconnect.cursor();
 
     while True:
         print('Current Temperature: ')
@@ -123,8 +132,13 @@ if __name__ == '__main__':
         carbonDioxideLevel = read_data_thingspeak_carbonDioxide()
         nitrogenDioxideLevel = read_data_thingspeak_nitrogenDixoxide()
         VOCLevel = read_data_thingspeak_VOC()
+        temperature = read_data_thingspeak_temperature()
+        humidity = read_data_thingspeak_humidity()
+        pressure = read_data_thingspeak_pressure()
 
-
+        #Inserting values into database
+        cursor.execute('''INSERT INTO vals VALUES(?, ?, ?, ?, ?, ?);''', (temperature, humidity, pressure, carbonDioxideLevel, nitrogenDioxideLevel, VOCLevel))
+        dbconnect.commit();
 
         #If the carbonDioxide, nitrogenDioxide, or VOC functions return a value above the specified thresholds, notify the controller to activate buzzer (1 turns on, 0 turns off).
         if(carbonDioxideLevel > 2000 or nitrogenDioxideLevel > 100 or VOC > 1):
@@ -139,25 +153,11 @@ if __name__ == '__main__':
                 response = conn.getresponse()
                 print(alertBuzzer)
                 print(response.status, response.reason)
-                print('Sleeping for 15 seconds...')
-                sleep(15)
                 data = response.read()
                 conn.close()
             except:
                 print("connection closed")
 
-            alertBuzzer = 0
-            params = urllib.parse.urlencode({'field1': alertBuzzer,'key':key })
-            try:
-                conn.request("POST", "/update", params, headers)
-                response = conn.getresponse()
-                print(alertBuzzer)
-                print(response.status, response.reason)
-                response = conn.getresponse()
-                data = response.read()
-                conn.close()
-            except:
-                print("connection closed")
 
         print('Sleeping 15 seconds...')
         sleep(15)
