@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:background="#1FE"
+    android:gravity="center"
+
+    tools:context=".FirstFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:orientation="vertical"
+            android:id="@+id/textview_second"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Temperature"
+            android:textAlignment="gravity"
+            android:textColor="#559F00"
+            android:textColorHint="#000000"
+            android:textSize="20dp"
+            android:typeface="monospace" />
+
+        <WebView
+            android:id="@+id/WebView1"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+
+            tools:ignore="InvalidId" />
+
+        <TextView
+            android:id="@+id/textview_second2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Humidity"
+            android:textAlignment="gravity"
+            android:textColor="#559F00"
+            android:textColorHint="#000000"
+            android:textSize="20dp"
+            android:typeface="monospace" />
+
+        <WebView
+            android:id="@+id/WebView2"
+            android:layout_width="match_parent"
+            android:layout_height="220dp" />
+
+        <TextView
+            android:id="@+id/textview_second3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pressure"
+            android:textAlignment="gravity"
+            android:textColor="#559F00"
+            android:textColorHint="#000000"
+            android:textSize="20dp"
+            android:typeface="monospace" />
+
+        <WebView
+            android:id="@+id/WebView3"
+            android:layout_width="match_parent"
+            android:layout_height="220dp" />
+
+        <TextView
+            android:id="@+id/textview_second4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Carbon Dioxide"
+            android:textAlignment="gravity"
+            android:textColor="#559F00"
+            android:textColorHint="#000000"
+            android:textSize="20dp"
+            android:typeface="monospace" />
+
+        <WebView
+            android:id="@+id/WebView4"
+            android:layout_width="match_parent"
+            android:layout_height="220dp" />
+
+        <TextView
+            android:id="@+id/textview_second5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nitrogen Dioxide"
+            android:textAlignment="gravity"
+            android:textColor="#559F00"
+            android:textColorHint="#000000"
+            android:textSize="20dp"
+            android:typeface="monospace" />
+
+        <WebView
+            android:id="@+id/WebView5"
+            android:layout_width="match_parent"
+            android:layout_height="220dp" />
+
+        <TextView
+            android:id="@+id/textview_second6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="VOC's"
+            android:textAlignment="gravity"
+            android:textColor="#559F00"
+            android:textColorHint="#000000"
+            android:textSize="20dp"
+            android:typeface="monospace" />
+
+        <WebView
+            android:id="@+id/WebView6"
+            android:layout_width="match_parent"
+            android:layout_height="220dp" />
+
+        <Button
+            android:id="@+id/button_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Back" />
+    </LinearLayout>
+
+</ScrollView>
