@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 import sqlite3
 
@@ -11,16 +12,13 @@ dbconnect.row_factory = sqlite3.Row;
 #now we create a cursor to work with db
 cursor = dbconnect.cursor();
 
-#temperature = 43
-#humidity = 50
-#pressure = 200
-#carbonDioxideLevel = 36.32
-#nitrogenDioxideLevel = 12.67
-#VOCLevel = 2.6
+#value = "DELETE FROM emails"
 #Creating a new table and inserting test values
-#cursor.execute('''CREATE TABLE vals (temperature REAL, humidity REAL, pressure REAL, carbonDioxide REAL, nitrogenDioxide REAL, voc REAL);''');
-#cursor.execute('''INSERT INTO vals VALUES('12', '45.65', '65.2', '54.65', '777', '2.2');''')
-#cursor.execute('''INSERT INTO vals VALUES(?, ?, ?, ?, ?, ?);''', (temperature, humidity, pressure, carbonDioxideLevel, nitrogenDioxideLevel, VOCLevel))
+#cursor.execute('''CREATE TABLE emails (email TEXT);''');
+#cursor.execute('''INSERT INTO emails VALUES('example@gmail.com');''')
+#cursor.execute('''INSERT INTO emails VALUES('test@gmail.com');''')
+#cursor.execute('''INSERT INTO emails VALUES('coltonsnowboards@gmail.com');''')
+#cursor.execute(value)
 
 dbconnect.commit();
 
@@ -30,7 +28,12 @@ cursor.execute('SELECT * FROM vals');
 print('temp humi press  CO2  NO2   VOC')
 for row in cursor:
     print(row['temperature'],row['humidity'],row['pressure'], row['carbonDioxide'], row['nitrogenDioxide'], row['voc']);
-
+print('\n')
+cursor.execute('SELECT * FROM emails');
+#print data
+print('Customer emails')
+for row in cursor:
+    print(row['email']);
 
 #close the connection
 dbconnect.close();
