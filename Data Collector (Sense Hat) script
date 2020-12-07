@@ -1,18 +1,34 @@
-from sense_emu import SenseHat
 from random import randint
 import http.client
 import urllib.request
+import random
 from time import sleep
 
-sense = SenseHat()
-key = "HB8UYDUZTGJ2DE3H"  # Put your API Key here
+
+key = "HB8UYDUZTGJ2DE3H" # Put your API Key here
 def write_temp():
     while True:
-      sleep(15)
+      sleep(5)
       #temp = randint(0,50)
-      temp = sense.temp
-      press = sense.pressure
-      hum = sense.humidity
+      temp = round(random.uniform(-20,120),2)
+      press = round(random.uniform(260,1260),2)
+      hum = round(random.uniform(0,100),2)
+      
+      if(temp>= 28.0):
+            print("Temperature is high") #Test temperature value with a high value for a room.
+      if(temp<=18):
+            print("Temperature is low") #Test for temperature value . If temp is lower than 18 degrees celsius the room temp is too low.
+      if(press>= 1030.0):
+            print("Pressure is high")
+            #Test for pressure value. Considered to be high above 1030 mbar.
+      if(press<= 1000.0):
+          print("Pressure is low") #Test for pressure. Considered to be low if value is lower than 1000 mbar.
+          
+      if(hum>= 60.0):
+          print("Humidity is high") #Test for humidity. If percentage is higher than 60% the air is too wet.
+      if(hum<= 30.0):
+          print("Humidity is low") #Test for humidity. If humidity lower than 30% the air is too dry.
+          
       params = urllib.parse.urlencode({'field1': temp, 'field2': hum, 'field3': press, 'key':key }) 
       headers = {"Content-typZZe": "application/x-www-form-urlencoded","Accept": "text/plain"}
       conn = http.client.HTTPConnection("api.thingspeak.com:80")
@@ -25,9 +41,12 @@ def write_temp():
             print (response.status, response.reason)
             data = response.read()
             conn.close()
+           
+        
       except:
             print("connection failed")
       break
+    
 if __name__ == "__main__":
       while True:
             write_temp()
