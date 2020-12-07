@@ -29,8 +29,8 @@ def read_data_thingspeak_buzzer():
     return int(turnOnBuzzer) #return turnOnBuzzer as an integer
   
 #set alertBuzzer from server back to 0
-def write_data_thingspeak_alertBuzzer():
-    alertBuzzer = 0
+def write_data_thingspeak_alertBuzzer(value):
+    alertBuzzer = value
     key = "P2ALDMI1Y8H2Y4JP"
     params = urllib.parse.urlencode({'field1': alertBuzzer,'key':key })
     headers = {"Content-typZZe": "application/x-www-form-urlencoded","Accept": "text/plain"}
@@ -47,7 +47,7 @@ def write_data_thingspeak_alertBuzzer():
 if __name__ == '__main__':
     while True:     #if turnOnBuzzer is set to 1, buzzer will turn on for 5 seconds. Check turnOnBuzzer every 15 seconds
         if read_data_thingspeak_buzzer() == 1:
-            write_data_thingspeak_alertBuzzer()
+            write_data_thingspeak_alertBuzzer(0)
             print ('Buzzer ON: Air quality is not safe!')
             buzzerOn()
         else:
