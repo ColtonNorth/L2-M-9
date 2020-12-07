@@ -24,13 +24,17 @@ def test_case():
       for x in field_1:
          #print(x['field1'])
          t.append(x['field1'])
-         print(t)
+         print(t)         #Prints value in the field. Tests whether values are being uploaded to the ThinkSpeak channel.
+         y = float(t[0])
+         if(y==1.0):
+            print("Server successfully recieving value. Feedback loop")
+
       for n in field_2:
           h.append(n['field2'])
-          print(h)
+          print(h)         #Prints value in the field. Tests whether values are being uploaded to the ThinkSpeak channel.
       for m in field_3:
           p.append(m['field3'])
-          print(p)
+          print(p)         #Prints value in the field. Tests whether values are being uploaded to the ThinkSpeak channel.
      
 if __name__ == '__main__':
      #thingspeak_post()
