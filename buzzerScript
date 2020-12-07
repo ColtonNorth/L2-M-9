@@ -45,12 +45,18 @@ def write_data_thingspeak_alertBuzzer(value):
 
 
 if __name__ == '__main__':
-    while True:     #if turnOnBuzzer is set to 1, buzzer will turn on for 5 seconds. Check turnOnBuzzer every 15 seconds
-        if read_data_thingspeak_buzzer() == 1:
-            write_data_thingspeak_alertBuzzer(0)
-            print ('Buzzer ON: Air quality is not safe!')
-            buzzerOn()
-        else:
-            print ('Buzzer OFF')
-        time.sleep(15)
-        break
+    try:    
+        while True:     #if turnOnBuzzer is set to 1, buzzer will turn on for 5 seconds. Check turnOnBuzzer every 15 seconds
+            if read_data_thingspeak_buzzer() == 1:
+                write_data_thingspeak_alertBuzzer(0)
+                print ('Buzzer ON: Air quality is not safe!')
+                buzzerOn()
+            elif read_data_thingspeak_buzzer() == 0:
+                print ('Buzzer OFF')
+            else:
+                print ('Error: alertBuzzer is set to ' + read_data_thingspeak_buzzer() + '. alertBuzzer must be set to 0 or 1. \n Setting alertBuzzer to 0.')
+                write_data_thingspeak_alertBuzzer(0)
+            time.sleep(15)
+            
+    except KeyboardInterrupt:   #Use keyboard interrupt (ctr + C) to stop running the code
+        pass
