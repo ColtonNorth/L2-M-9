@@ -54,7 +54,7 @@ if __name__ == '__main__':
             elif read_data_thingspeak_buzzer() == 0:
                 print ('Buzzer OFF')
             else:
-                print ('Error: alertBuzzer is set to ' + read_data_thingspeak_buzzer() + '. alertBuzzer must be set to 0 or 1. \n Setting alertBuzzer to 0.')
+                print ('Error: alertBuzzer is set to ' + str(read_data_thingspeak_buzzer()) + '. alertBuzzer must be set to 0 or 1. \n Setting alertBuzzer to 0.')
                 write_data_thingspeak_alertBuzzer(0)
             time.sleep(15)
             
