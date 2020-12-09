@@ -5,19 +5,19 @@ class test_ranges(unittest.TestCase):
 
     def test_ranges(self):
         //Initialize random values within range
-        carbonVal = randint(250,5000)
-        nitrogenVal = randint(0,300)
-        vocVal = randint(500,1000)
+        carbonVal = randint(0,2000)
+        nitrogenVal = randint(0,100)
+        vocVal = randint(0,750)
 
         //Maximum values for given ranges
-        carbonMaxVal = 5000
-        carbonMinVal = 250
+        carbonMaxVal = 2000
+        carbonMinVal = 0
 
-        nitrogenMaxVal = 300
+        nitrogenMaxVal = 100
         nitrogenMinVal = 0
 
-        vocMaxVal = 1000
-        vocMinVal = 500
+        vocMaxVal = 750
+        vocMinVal = 0
 
         //Test if the values are within the given range
         self.assertTrue(carbonVal <=  carbonMaxVal, msg= "carbon Level out of range")
