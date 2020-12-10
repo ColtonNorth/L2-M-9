@@ -1,7 +1,7 @@
 import json
 import threading
 import requests
-from airqualityvals1 import write_airsensor
+from airQualitySensorScript import write_airsensor
 
 write_airsensor()
 
