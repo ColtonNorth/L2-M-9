@@ -1,5 +1,5 @@
 from buzzer import *
-
+#This code writes and reads data from thingspeak by calling functions from buzzerScript.
 value = int(input("Enter number"))
 write_data_thingspeak_alertBuzzer(value)
 time.sleep(2)
